@@ -17,10 +17,11 @@
 #
 import json
 
+expenses_file = open('expenses.json') 
+expenses = json.load(expenses_file) 
+expenses_file.close() 
 expenses = []
-expenses_file = open('expenses.json') # opening JSON file
-expenses = json.load(expenses_file) # returns JSON object as a dictionary
-expenses_file.close() # Closing file
+
 # load expenses from expenses.json file here
 # https://www.geeksforgeeks.org/read-write-and-parse-json-using-python/ (Python read JSON file)
 pass
@@ -28,7 +29,27 @@ pass
 while True:
     command = input("\nChoose command:")
     if command == "1":
-        pass
+        print("Ievadiet nosaukumu un summu")
+        expense ={
+	        "name" : input(str("")),
+            "summa" : input(str("")),
+        }
+        expenses.append(expense)
+        with open("expenses.json", "w") as outfile:
+            json.dump(expenses, outfile)  
+    
+    if command == "2":
+        def sort_price(expense):
+          return int(expense[1])
+        expenses.sort(key = sort_price, reverse = True)
+        print(expenses[:11])
+    pass
+    if command == "3":
+        def sort_price(expense):
+          return int(expense[1])
+        expenses.sort(key = sort_price)
+        print(expenses[:11])
+    
     if command == "e":
         print("Exiting...")
         break
