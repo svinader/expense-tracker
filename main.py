@@ -15,9 +15,12 @@
 # - iespēja apskatīt vidējo izdevumu summu
 # [!] Programmai jaglabā izdevumu stāvokli kad programma ir izslēgta palaista no jauna
 #
+import json
 
 expenses = []
-
+expenses_file = open('expenses.json') # opening JSON file
+expenses = json.load(expenses_file) # returns JSON object as a dictionary
+expenses_file.close() # Closing file
 # load expenses from expenses.json file here
 # https://www.geeksforgeeks.org/read-write-and-parse-json-using-python/ (Python read JSON file)
 pass
